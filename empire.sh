@@ -15,13 +15,13 @@ then
     docker run -it --rm \
     --net=host \
     -e EMPIRE_LHOST=$HOST_IP \
-    empire $COMMAND
+    isaudits/empire $COMMAND
 else
     HOST_IP=$(ifconfig en0 | awk '/ *inet /{print $2}')
     
     docker run -it --rm \
     -p 443:443 -p 1337:1337 \
     -e EMPIRE_LHOST=$HOST_IP \
-    empire $COMMAND
+    isaudits/empire $COMMAND
 fi
 
