@@ -7,6 +7,9 @@ We decided to roll our own because:
 - Resource scripts to auto launch listeners (pass woth -r)
 - Use debian instead of Ubuntu (smaller and we already use this image elsewhere)
 
+If you are viewing this on docker hub, clone the full repo at https://github.com/isaudits/docker-empire
+to get the launcher scripts and alias files described below.
+
 ## Build Notes
 Pull:
 
@@ -18,7 +21,7 @@ or Build:
 
 # Usage
 Provided launcher script will automatically launch Empire with parameters based
-on environment variables except locak IP (autodetected) and auto launch an https and
+on environment variables except local IP (autodetected) and auto launch an https and
 meterpreter listener. If any additional arguments are passed to the script, those will
 be passed as parameters as opposed to automatically launching listeners.
 
