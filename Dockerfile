@@ -17,7 +17,6 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     git \
     sudo \
     apt-utils \
-    lsb-core \
     python2.7 \
     python-dev \
     python-pip \
@@ -32,6 +31,8 @@ RUN git clone --depth=1 -b dev https://github.com/EmpireProject/Empire.git /opt/
     rm -rf .git && \
     cd /opt/Empire/setup/ && \
     ./install.sh && \
+    # fix bug for pefile module not found
+    pip install pefile && \
     # installer grabs some more stuff from repo - clean it up!
     apt-get autoremove -y && \
     apt-get clean && \
