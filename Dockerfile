@@ -25,8 +25,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* 
 
-# From https://github.com/EmpireProject/Empire/blob/master/Dockerfile
-RUN git clone --depth=1 -b dev https://github.com/EmpireProject/Empire.git /opt/Empire && \
+# Using BC-SECURITY fork now since original project abandoned
+RUN git clone --depth=1 https://github.com/BC-SECURITY/Empire.git /opt/Empire && \
     cd /opt/Empire/ && \
     rm -rf .git && \
     cd /opt/Empire/setup/ && \
