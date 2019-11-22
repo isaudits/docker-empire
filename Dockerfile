@@ -38,7 +38,7 @@ RUN git clone --depth=1 https://github.com/BC-SECURITY/Empire.git /opt/Empire &&
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Override these with .env file or command line parameters
+# Override these with .env file or command line parameters - NOTE CURRENTLY EMPIRE OPTIONS NOT DOING ANYTHING!
 ENV EMPIRE_USER='admin' \
     EMPIRE_PASS='changeyourpassword' \
     EMPIRE_REST_PORT='1337' \

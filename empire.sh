@@ -5,7 +5,7 @@
 if [ "$#" -ne 0 ]; then
     COMMAND="./empire $@"
 else
-    COMMAND="./empire -r scripts/listener_https.rc"
+    COMMAND="./empire --rest --user admin --pass changeyourpassword -r scripts/listener_https.rc"
 fi
 
 if [[ $(uname -s) == Linux ]]

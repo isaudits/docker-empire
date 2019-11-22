@@ -1,3 +1,6 @@
+# NOTE - Host info below will be replaced with environment variables from entrypoint
+# Changing this line in this file will override the replacement
+
 listeners
 uselistener meterpreter
 set Name meterpreter
