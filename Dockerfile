@@ -17,10 +17,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     git \
     sudo \
     apt-utils \
-    python2.7 \
-    python-dev \
-    python-pip \
-    python-m2crypto && \
+    python3 \
+    python3-pip && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* 
@@ -31,8 +29,6 @@ RUN git clone --depth=1 https://github.com/BC-SECURITY/Empire.git /opt/Empire &&
     rm -rf .git && \
     cd /opt/Empire/setup/ && \
     ./install.sh && \
-    # fix bug for pefile module not found
-    pip install pefile && \
     # installer grabs some more stuff from repo - clean it up!
     apt-get autoremove -y && \
     apt-get clean && \
