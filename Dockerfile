@@ -29,6 +29,8 @@ RUN git clone --depth=1 https://github.com/BC-SECURITY/Empire.git /opt/Empire &&
     rm -rf .git && \
     cd /opt/Empire/setup/ && \
     ./install.sh && \
+    # fix pyparsing error missing in requirements.txt (commit pending)
+    pip3 install pyparsing && \
     # installer grabs some more stuff from repo - clean it up!
     apt-get autoremove -y && \
     apt-get clean && \
