@@ -3,9 +3,10 @@
 # If command arguments are passed, run empire with those arguments;
 # otherwise, auto-run listener start resource script
 if [ "$#" -ne 0 ]; then
-    COMMAND="./empire $@"
+    COMMAND="powershell-empire $@"
 else
-    COMMAND="./empire --rest --user admin --pass changeyourpassword -r scripts/listener_https.rc"
+    #COMMAND="powershell-empire server -r /opt/scripts/listener_https.rc"
+    COMMAND="powershell-empire server"
 fi
 
 if [[ $(uname -s) == Linux ]]

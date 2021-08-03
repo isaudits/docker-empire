@@ -1,11 +1,11 @@
 # docker-empire
-Docker implementation of Empire framework based upon Debian stable image
+Docker implementation of Empire framework based upon Kali rolling image
 
 ## Description
 We decided to roll our own because:
-- Custom entrypoint that allows us to start REST API
-- Resource scripts to auto launch listeners (pass woth -r)
-- Use debian instead of Ubuntu (smaller and we already use this image elsewhere)
+- Official docker image was broken
+- Full dependency functionality
+- Use kali rolling since we already use this image elsewhere
 
 If you are viewing this on docker hub, clone the full repo at https://github.com/isaudits/docker-empire
 to get the launcher scripts and alias files described below.
@@ -26,6 +26,10 @@ meterpreter listener. If any additional arguments are passed to the script, thos
 be passed as parameters as opposed to automatically launching listeners.
 
 Default environment variables can be overridden via command line launch or .env file.
+
+# TODO
+- Resource scripts no longer working in 4.x
+- Starkiller launcher
 
 --------------------------------------------------------------------------------
 

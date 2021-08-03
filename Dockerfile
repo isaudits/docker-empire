@@ -1,9 +1,4 @@
-# Roll our own because:
-# - Custom entrypoint that allows us to start REST API
-# - Resource scripts to auto launch listeners (pass woth -r)
-# - Use debian instead of Ubuntu (smaller and we already use this image elsewhere)
-
-FROM debian:stable
+FROM kalilinux/kali-rolling:latest
 
 WORKDIR /root/
 
@@ -12,29 +7,11 @@ ENV STAGING_KEY=RANDOM
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
-    wget \
-    curl \
-    git \
-    sudo \
-    apt-utils \
-    python3 \
-    python3-pip && \
+    powershell-empire \
+    starkiller && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* 
-
-# Using BC-SECURITY fork now since original project abandoned
-RUN git clone --depth=1 https://github.com/BC-SECURITY/Empire.git /opt/Empire && \
-    cd /opt/Empire/ && \
-    rm -rf .git && \
-    cd /opt/Empire/setup/ && \
-    ./install.sh && \
-    # fix pyparsing error missing in requirements.txt (commit pending)
-    pip3 install pyparsing && \
-    # installer grabs some more stuff from repo - clean it up!
-    apt-get autoremove -y && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
 
 # Override these with .env file or command line parameters - NOTE CURRENTLY EMPIRE OPTIONS NOT DOING ANYTHING!
 ENV EMPIRE_USER='admin' \
@@ -47,12 +24,11 @@ ENV EMPIRE_USER='admin' \
 
 COPY entrypoint.* /opt/
 
-#ENTRYPOINT ["python", "/opt/entrypoint.py"]
 ENTRYPOINT ["/opt/entrypoint.sh"]
 
-COPY ./scripts/ /opt/Empire/scripts/
+COPY ./scripts/ /opt/scripts/
 
-WORKDIR /opt/Empire/
+WORKDIR /opt/
 
-CMD ["/bin/bash"]
+CMD ["powershell-empire", "server"]
 
