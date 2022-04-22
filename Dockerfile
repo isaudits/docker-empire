@@ -1,4 +1,4 @@
-FROM isaudits/msf:minimal
+FROM kalilinux/kali-rolling:latest
 
 WORKDIR /root/
 
@@ -10,6 +10,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     wget \
     tini \
     python3-tk python3-pyperclip \
+    metasploit-framework \
     powershell-empire && \
     apt-get autoremove -y && \
     apt-get clean && \
