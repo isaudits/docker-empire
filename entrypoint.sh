@@ -3,7 +3,7 @@
 FILE=/opt/scripts/listener_https.rc
 if [[ -f "$FILE" ]]; then
     sed -i "s,Host https://127.0.0.1,Host https://$EMPIRE_LHOST," $FILE
-    sed -i "s,Port 443,Port $EMPIRE_LHOST," $FILE
+    sed -i "s,Port 443,Port $EMPIRE_LPORT," $FILE
 fi
 
 FILE=/opt/scripts/listener_meterpreter.rc
