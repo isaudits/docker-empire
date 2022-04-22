@@ -1,4 +1,4 @@
-FROM isaudits/msf:minimal:latest
+FROM isaudits/msf:minimal
 
 WORKDIR /root/
 
