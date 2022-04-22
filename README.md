@@ -6,6 +6,7 @@ We decided to roll our own because:
 - Official docker image was broken
 - Full dependency functionality
 - Use kali rolling since we already use this image elsewhere
+- Add in ttyd option for launching a web service with an Empire client terminal
 
 If you are viewing this on docker hub, clone the full repo at https://github.com/isaudits/docker-empire
 to get the launcher scripts and alias files described below.
@@ -20,16 +21,29 @@ or Build:
     ./build.sh
 
 # Usage
-Provided launcher script will automatically launch Empire with parameters based
+Provided launcher script will automatically launch Empire server with parameters based
 on environment variables except local IP (autodetected) and auto launch an https and
 meterpreter listener. If any additional arguments are passed to the script, those will
 be passed as parameters as opposed to automatically launching listeners.
 
 Default environment variables can be overridden via command line launch or .env file.
 
+# Empire web client
+
+To launch a web service containing the empire web client:
+
+    docker run -it --rm \
+        -p 7681:7681 \
+        -e EMPIRE_LHOST=<HOST IP ADDRESS> \
+        -e EMPIRE_REST_PORT=1337 \
+        -e EMPIRE_SOCKET_PORT=5000 \
+        -e EMPIRE_USERNAME=<USERNAME> \
+        -e EMPIRE_PASSWORD=<PASSWORD> \
+        isaudits/empire tini -- ttyd -p 7681 powershell-empire client
+
 # TODO
 - Resource scripts no longer working in 4.x
-- Starkiller launcher
+- Add script to launch empire cli web service
 
 --------------------------------------------------------------------------------
 
