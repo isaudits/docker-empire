@@ -1,4 +1,4 @@
-FROM kalilinux/kali-rolling:latest
+FROM isaudits/msf:minimal:latest
 
 WORKDIR /root/
 
