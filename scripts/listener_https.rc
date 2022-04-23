@@ -4,7 +4,7 @@
 listeners
 uselistener http
 set Name https
-set Host https://127.0.0.1:443
+set Host https://127.0.0.1
+set Port 443
 set CertPath data/
 execute
-launcher powershell
