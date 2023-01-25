@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     wget \
     tini \
-    powershell python3-tk python3-pyperclip \
+    python3-tk python3-pyperclip \
     metasploit-framework \
     powershell-empire && \
     apt-get autoremove -y && \
