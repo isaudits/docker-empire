@@ -1,14 +1,9 @@
 #!/bin/bash
 
-FILE=/opt/scripts/listener_https.rc
+FILE=/opt/scripts/listener_http.rc
 if [[ -f "$FILE" ]]; then
     sed -i "s,Host https://127.0.0.1,Host https://$EMPIRE_LHOST," $FILE
     sed -i "s,Port 443,Port $EMPIRE_LPORT," $FILE
-fi
-
-FILE=/opt/scripts/listener_meterpreter.rc
-if [[ -f "$FILE" ]]; then
-    sed -i "s,https://127.0.0.1:8443,https://$MSF_LHOST:$MSF_LPORT," $FILE
 fi
 
 FILE=/usr/share/powershell-empire/empire/server/config.yaml

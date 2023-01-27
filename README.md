@@ -22,9 +22,8 @@ or Build:
 
 # Usage
 Provided launcher script will automatically launch Empire server with parameters based
-on environment variables except local IP (autodetected) and auto launch an https and
-meterpreter listener. If any additional arguments are passed to the script, those will
-be passed as parameters as opposed to automatically launching listeners.
+on environment variables except local IP (autodetected). If any additional arguments are 
+passed to the script, those will be passed as parameters as opposed to automatically launching listeners.
 
 Default environment variables can be overridden via command line launch or .env file.
 

@@ -5,7 +5,7 @@
 if [ "$#" -ne 0 ]; then
     COMMAND="powershell-empire $@"
 else
-    #COMMAND="powershell-empire server -r /opt/scripts/listener_https.rc"
+    #COMMAND="powershell-empire server -r /opt/scripts/listener_http.rc"
     COMMAND="powershell-empire server"
 fi
 
