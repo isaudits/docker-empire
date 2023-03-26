@@ -6,5 +6,5 @@ uselistener http
 set Name http
 set Host https://127.0.0.1
 set Port 443
-set CertPath /empire/empire/server/data
+set CertPath /usr/share/powershell-empire/empire/server/data
 execute
