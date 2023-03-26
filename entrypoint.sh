@@ -25,7 +25,8 @@ fi
 # Fix jacked up directories on kali to match config file
 mv /var/lib/powershell-empire/empire/server /var/lib/powershell-empire/
 mv /var/lib/powershell-empire/empire/client /var/lib/powershell-empire/
-rm mv /var/lib/powershell-empire/empire
+rm -r /var/lib/powershell-empire/empire/
+rm -r /usr/share/powershell-empire/empire/client/downloads
 
 exec $@
 
