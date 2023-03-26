@@ -35,7 +35,7 @@ ENTRYPOINT ["/opt/entrypoint.sh"]
 
 COPY ./scripts/ /opt/scripts/
 
-WORKDIR /opt/
+WORKDIR /usr/share/powershell-empire/
 
-CMD ["powershell-empire", "server"]
+CMD ["python3", "empire.py", "server"]
 

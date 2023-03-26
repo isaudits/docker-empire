@@ -3,8 +3,7 @@ Docker implementation of Empire framework based upon Kali rolling image
 
 ## Description
 We decided to roll our own because:
-- Official docker image was broken
-- Full dependency functionality
+- Official docker image does not have ARM support
 - Use kali rolling since we already use this image elsewhere
 - Add in ttyd option for launching a web service with an Empire client terminal
 
@@ -41,7 +40,8 @@ To launch a web service containing the empire web client:
         isaudits/empire tini -- ttyd -p 7681 powershell-empire client
 
 # TODO
-- Resource scripts no longer working in 4.x
+- .NET SDK and powershell packages not currently available in kali docker image for some reason; csharpserver does not work
+- Resource scripts no longer working as a server side parameter
 - Add script to launch empire cli web service
 
 --------------------------------------------------------------------------------
@@ -50,9 +50,7 @@ Copyright 2018
 
 Matthew C. Jones, CPA, CISA, OSCP, CCFE
 
-IS Audits & Consulting, LLC - <http://www.isaudits.com/>
-
-TJS Deemer Dana LLP - <http://www.tjsdd.com/>
+Symphona - <https://www.symphona.us/>
 
 --------------------------------------------------------------------------------
 
