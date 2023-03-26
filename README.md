@@ -1,12 +1,16 @@
 # docker-empire
-Docker implementation of Empire framework based upon Kali rolling image
+Docker implementation of Empire framework
 
 ## Description
-We decided to roll our own because:
-- Official docker image was broken
-- Full dependency functionality
-- Use kali rolling since we already use this image elsewhere
-- Add in ttyd option for launching a web service with an Empire client terminal
+Slightly modified version of the official Empire image with environment variable functionality for setting
+user credentials and port settings at runtime:
+
+EMPIRE_USER=admin
+EMPIRE_PASS=changeyourpassword
+EMPIRE_REST_PORT=1337
+EMPIRE_SOCKET_PORT=5000
+EMPIRE_LHOST=0.0.0.0
+EMPIRE_LPORT=443
 
 If you are viewing this on docker hub, clone the full repo at https://github.com/isaudits/docker-empire
 to get the launcher scripts and alias files described below.

@@ -3,10 +3,10 @@
 # If command arguments are passed, run empire with those arguments;
 # otherwise, auto-run listener start resource script
 if [ "$#" -ne 0 ]; then
-    COMMAND="powershell-empire $@"
+    COMMAND="sudo -E poetry run python empire.py $@"
+    
 else
-    #COMMAND="powershell-empire server -r /opt/scripts/listener_http.rc"
-    COMMAND="powershell-empire server"
+    COMMAND="sudo -E poetry run python empire.py server"
 fi
 
 if [[ $(uname -s) == Linux ]]

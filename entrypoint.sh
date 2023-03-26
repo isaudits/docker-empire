@@ -6,13 +6,13 @@ if [[ -f "$FILE" ]]; then
     sed -i "s,Port 443,Port $EMPIRE_LPORT," $FILE
 fi
 
-FILE=/usr/share/powershell-empire/empire/server/config.yaml
+FILE=/empire/empire/server/config.yaml
 if [[ -f "$FILE" ]]; then
     sed -i "s,username: empireadmin,username: $EMPIRE_USER," $FILE
     sed -i "s,password: password123,password: $EMPIRE_PASS," $FILE
 fi
 
-FILE=//usr/share/powershell-empire/empire/client/config.yaml
+FILE=/empire/empire/client/config.yaml
 if [[ -f "$FILE" ]]; then
     sed -i "s,host: https://localhost,host: https://$EMPIRE_LHOST," $FILE
     sed -i "s,port: 1337,port: $EMPIRE_REST_PORT," $FILE
