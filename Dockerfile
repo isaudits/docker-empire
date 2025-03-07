@@ -1,24 +1,10 @@
-FROM kalilinux/kali-rolling:latest
-
-WORKDIR /root/
-
-ENV LC_ALL C.UTF-8
-ENV STAGING_KEY=RANDOM
-ENV DEBIAN_FRONTEND noninteractive
-
-RUN apt-get update && apt-get upgrade -y && apt-get install -y \
-    wget \
-    tini \
-    python3-tk python3-pyperclip \
-    powershell-empire && \
-    apt-get autoremove -y && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* 
+FROM bcsecurity/empire:latest
 
 RUN cd /opt && \
-    wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 && \
-    chmod 755 /opt/ttyd.x86_64 && \
-    ln -s /opt/ttyd.x86_64 /usr/bin/ttyd
+[ "${TARGETARCH}" = "arm64" ] && FILE="ttyd.aarch64" || FILE="ttyd.x86_64"; \
+    wget https://github.com/tsl0922/ttyd/releases/latest/download/${FILE} && \
+    chmod 755 /opt/${FILE} && \
+    ln -s /opt/${FILE} /usr/bin/ttyd
     
 
 # Override these with .env file or command line parameters
@@ -27,7 +13,13 @@ ENV EMPIRE_USER=admin \
     EMPIRE_REST_PORT=1337 \
     EMPIRE_SOCKET_PORT=5000 \
     EMPIRE_LHOST=0.0.0.0 \
-    EMPIRE_LPORT=443
+    EMPIRE_LPORT=443 \
+    EMPIRE_DATA_PATH=/data \
+    EMPIRE_DB=sqlite \
+    EMPIRE_MYSQL_HOST=localhost:3306 \
+    EMPIRE_MYSQL_USERNAME=empire_user \
+    EMPIRE_MYSQL_PASSWORD=empire_password \
+    EMPIRE_MYSQL_DB=empire
 
 COPY entrypoint.* /opt/
 
@@ -35,7 +27,5 @@ ENTRYPOINT ["/opt/entrypoint.sh"]
 
 COPY ./scripts/ /opt/scripts/
 
-WORKDIR /usr/share/powershell-empire/
-
-CMD ["python3", "empire.py", "server"]
+CMD ["./ps-empire", "server", "--config", "empire/server/config.yaml"]
 

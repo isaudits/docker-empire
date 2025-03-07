@@ -3,10 +3,10 @@
 # If command arguments are passed, run empire with those arguments;
 # otherwise, auto-run listener start resource script
 if [ "$#" -ne 0 ]; then
-    COMMAND="python3 empire.py $@"
+    COMMAND="./ps-empire $@"
 else
-    #COMMAND="powershell-empire server -r /opt/scripts/listener_http.rc"
-    COMMAND="python3 empire.py server"
+    #COMMAND="./ps-empire server --config empire/server/config.yaml -r /opt/scripts/listener_http.rc"
+    COMMAND="./ps-empire server --config empire/server/config.yaml"
 fi
 
 if [[ $(uname -s) == Linux ]]
@@ -18,7 +18,7 @@ then
     -e EMPIRE_LHOST=$HOST_IP \
     isaudits/empire $COMMAND
 else
-    HOST_IP=$(ifconfig en0 | awk '/ *inet /{print $2}')
+    HOST_IP=$(ifconfig en0 | awk '/ *inet /{print $2}' | head -n 1)
     
     docker run -it --rm \
     -p 443:443 -p 1337:1337 \

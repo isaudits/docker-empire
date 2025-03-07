@@ -1,11 +1,26 @@
 # docker-empire
-Docker implementation of Empire framework based upon Kali rolling image
+Enhanced Docker implementation of Empire framework based upon offical image
 
 ## Description
-We decided to roll our own because:
-- Official docker image does not have ARM support
-- Use kali rolling since we already use this image elsewhere
+Additional features stacked on top of official image:
+- Official docker image does not have environment variable support
+- Move default database and certificate location so it can easily be mounted
+- Fix config file customization not being honored
 - Add in ttyd option for launching a web service with an Empire client terminal
+
+## Available environment variables and default values
+EMPIRE_USER=admin
+EMPIRE_PASS=changeyourpassword
+EMPIRE_REST_PORT=1337
+EMPIRE_SOCKET_PORT=5000
+EMPIRE_LHOST=0.0.0.0
+EMPIRE_LPORT=443
+EMPIRE_DATA_PATH=/data
+EMPIRE_DB=sqlite
+EMPIRE_MYSQL_HOST=localhost:3306
+EMPIRE_MYSQL_USERNAME=empire_user
+EMPIRE_MYSQL_PASSWORD=empire_password
+EMPIRE_MYSQL_DB=empire
 
 If you are viewing this on docker hub, clone the full repo at https://github.com/isaudits/docker-empire
 to get the launcher scripts and alias files described below.
@@ -40,7 +55,6 @@ To launch a web service containing the empire web client:
         isaudits/empire tini -- ttyd -p 7681 powershell-empire client
 
 # TODO
-- .NET SDK and powershell packages not currently available in kali docker image for some reason; csharpserver does not work
 - Resource scripts no longer working as a server side parameter
 - Add script to launch empire cli web service
 
