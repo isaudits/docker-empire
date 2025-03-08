@@ -1,5 +1,7 @@
 FROM bcsecurity/empire:latest
 
+RUN apt-get update && apt-get install -y --no-install-recommends tini && rm -rf /var/lib/apt/lists/*
+
 RUN cd /opt && \
 [ "${TARGETARCH}" = "arm64" ] && FILE="ttyd.aarch64" || FILE="ttyd.x86_64"; \
     wget https://github.com/tsl0922/ttyd/releases/latest/download/${FILE} && \
