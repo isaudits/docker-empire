@@ -29,5 +29,5 @@ ENTRYPOINT ["/opt/entrypoint.sh"]
 
 COPY ./scripts/ /opt/scripts/
 
-CMD ["./ps-empire", "server", "--config", "empire/server/config.yaml"]
+CMD ["./ps-empire", "server", "-f", "--config", "empire/server/config.yaml"]
 

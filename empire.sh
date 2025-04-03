@@ -6,7 +6,7 @@ if [ "$#" -ne 0 ]; then
     COMMAND="./ps-empire $@"
 else
     #COMMAND="./ps-empire server --config empire/server/config.yaml -r /opt/scripts/listener_http.rc"
-    COMMAND="./ps-empire server --config empire/server/config.yaml"
+    COMMAND="./ps-empire server -f --config empire/server/config.yaml"
 fi
 
 if [[ $(uname -s) == Linux ]]
