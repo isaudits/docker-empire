@@ -16,6 +16,7 @@ if [[ -f "$FILE" ]]; then
     sed -i "s,username: empire_user,username: $EMPIRE_MYSQL_USERNAME," $FILE
     sed -i "s,password: empire_password,password: $EMPIRE_MYSQL_PASSWORD," $FILE
     sed -i "s,database_name: empire,database_name: $EMPIRE_MYSQL_DB," $FILE
+    sed -i "s,downloads: downloads,downloads: $EMPIRE_DATA_PATH/downloads," $FILE
 fi
 
 mkdir -p $EMPIRE_DATA_PATH
