@@ -8,18 +8,18 @@ Additional features stacked on top of official image:
 - Fix config file customization not being honored
 
 ## Available environment variables and default values
-EMPIRE_USER=admin
-EMPIRE_PASS=changeyourpassword
-EMPIRE_REST_PORT=1337
-EMPIRE_SOCKET_PORT=5000
-EMPIRE_LHOST=0.0.0.0
-EMPIRE_LPORT=443
-EMPIRE_DATA_PATH=/data
-EMPIRE_DB=sqlite
-EMPIRE_MYSQL_HOST=localhost:3306
-EMPIRE_MYSQL_USERNAME=empire_user
-EMPIRE_MYSQL_PASSWORD=empire_password
-EMPIRE_MYSQL_DB=empire
+    EMPIRE_USER=admin
+    EMPIRE_PASS=changeyourpassword
+    EMPIRE_REST_PORT=1337
+    EMPIRE_SOCKET_PORT=5000
+    EMPIRE_LHOST=0.0.0.0
+    EMPIRE_LPORT=443
+    EMPIRE_DATA_PATH=/data
+    EMPIRE_DB=sqlite
+    EMPIRE_MYSQL_HOST=localhost:3306
+    EMPIRE_MYSQL_USERNAME=empire_user
+    EMPIRE_MYSQL_PASSWORD=empire_password
+    EMPIRE_MYSQL_DB=empire
 
 If you are viewing this on docker hub, clone the full repo at https://github.com/isaudits/docker-empire
 to get the launcher scripts and alias files described below.
@@ -42,7 +42,6 @@ Default environment variables can be overridden via command line launch or .env 
 
 # TODO
 - Resource scripts no longer working as a server side parameter
-- Add script to launch empire cli web service
 
 --------------------------------------------------------------------------------
 
